@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SwiftUI
 
 class BudgetCateogriesTableVC: UITableViewController {
     
@@ -19,6 +20,7 @@ class BudgetCateogriesTableVC: UITableViewController {
         
         let request = BudgetCateogry.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -45,6 +47,7 @@ class BudgetCateogriesTableVC: UITableViewController {
     @objc func showAddBudgetCategory(_ sender: UIBarButtonItem) {
         let navController = UINavigationController(rootViewController: AddBudgetCategoryVC(persistentContainer: persistentContainer))
         present(navController, animated: true)
+        self.viewDidLoad()
     }
     
     private func setupUI() {
@@ -55,6 +58,15 @@ class BudgetCateogriesTableVC: UITableViewController {
         title = "Budget"
     }
     
+    func deleteCategory(_ budgetCategory : BudgetCateogry){
+        persistentContainer.viewContext.delete(budgetCategory)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            let alert =  Alert(title: Text("Error"), message: Text("Unable to delete"))
+        }
+    }
+    
     // UITableViewDataSource delegate functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (fetchedResultsController.fetchedObjects ?? []).count
@@ -63,21 +75,34 @@ class BudgetCateogriesTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let budgetCateogory = fetchedResultsController.object(at: indexPath)
         
-        self.navigationController?.pushViewController(BudgetDetailVC(persistentContainer: persistentContainer, budgetCategory: budgetCateogory), animated: true)
+        self.navigationController?.pushViewController(BudgetDetailVC(budgetCategory: budgetCateogory, persistentContainer: persistentContainer), animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let budgetCategory = fetchedResultsController.object(at: indexPath)
+            deleteCategory(budgetCategory)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath)
-        cell.accessoryType = .disclosureIndicator
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell") else {
+            fatalError("You forgot to register your table view cell")
+        }
         let budgetCategory = fetchedResultsController.object(at: indexPath)
+        let name = budgetCategory.name!
+        let amount = String(budgetCategory.amount)
+        let remainingAmount = String(budgetCategory.remainingAmount)
         
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = budgetCategory.name
-        cell.contentConfiguration = configuration
-        
+        cell.contentConfiguration = UIHostingConfiguration {
+            // For demo purposes the SwiftUI code below isn't in a separate file/view
+            BudgetCategoryTableViewCell(nameLabel: name, amountLabel: amount, remainingLabel: remainingAmount)
+        }
+
         return cell
+        
     }
 
 }

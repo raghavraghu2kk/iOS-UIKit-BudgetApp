@@ -12,6 +12,8 @@
 		4A3C9D1D2BFB8F24006642A4 /* AddBudgetCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C9D1C2BFB8F24006642A4 /* AddBudgetCategoryVC.swift */; };
 		4A3C9D1F2BFB9936006642A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C9D1E2BFB9936006642A4 /* Extensions.swift */; };
 		4A3C9D212BFC2BD8006642A4 /* BudgetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C9D202BFC2BD8006642A4 /* BudgetDetailVC.swift */; };
+		4A3C9D262BFDC8BD006642A4 /* BudgetCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C9D252BFDC8BD006642A4 /* BudgetCategoryTableViewCell.swift */; };
+		4A3C9D292BFDD8CA006642A4 /* Budgetcategory+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C9D282BFDD8CA006642A4 /* Budgetcategory+CoreData.swift */; };
 		4A8AB4052BBE765E00B7B2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AB4042BBE765E00B7B2E2 /* AppDelegate.swift */; };
 		4A8AB4072BBE765E00B7B2E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AB4062BBE765E00B7B2E2 /* SceneDelegate.swift */; };
 		4A8AB40E2BBE766100B7B2E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AB40D2BBE766100B7B2E2 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		4A3C9D1C2BFB8F24006642A4 /* AddBudgetCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCategoryVC.swift; sourceTree = "<group>"; };
 		4A3C9D1E2BFB9936006642A4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4A3C9D202BFC2BD8006642A4 /* BudgetDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailVC.swift; sourceTree = "<group>"; };
+		4A3C9D252BFDC8BD006642A4 /* BudgetCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		4A3C9D282BFDD8CA006642A4 /* Budgetcategory+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Budgetcategory+CoreData.swift"; sourceTree = "<group>"; };
 		4A8AB4012BBE765E00B7B2E2 /* BudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A8AB4042BBE765E00B7B2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A8AB4062BBE765E00B7B2E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A3C9D222BFDC5F3006642A4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A3C9D252BFDC8BD006642A4 /* BudgetCategoryTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4A3C9D272BFDD8B1006642A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A3C9D282BFDD8CA006642A4 /* Budgetcategory+CoreData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4A8AB3F82BBE765E00B7B2E2 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +82,8 @@
 		4A8AB4032BBE765E00B7B2E2 /* BudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				4A3C9D272BFDD8B1006642A4 /* Model */,
+				4A3C9D222BFDC5F3006642A4 /* Cells */,
 				4A8AB4042BBE765E00B7B2E2 /* AppDelegate.swift */,
 				4A8AB4062BBE765E00B7B2E2 /* SceneDelegate.swift */,
 				4A3C9D172BFB85AA006642A4 /* BudgetCateogriesTableVC.swift */,
@@ -146,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A3C9D292BFDD8CA006642A4 /* Budgetcategory+CoreData.swift in Sources */,
+				4A3C9D262BFDC8BD006642A4 /* BudgetCategoryTableViewCell.swift in Sources */,
 				4A8AB4052BBE765E00B7B2E2 /* AppDelegate.swift in Sources */,
 				4A3C9D1F2BFB9936006642A4 /* Extensions.swift in Sources */,
 				4A3C9D212BFC2BD8006642A4 /* BudgetDetailVC.swift in Sources */,

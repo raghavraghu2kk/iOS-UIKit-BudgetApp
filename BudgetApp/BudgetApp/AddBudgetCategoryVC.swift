@@ -90,6 +90,8 @@ class AddBudgetCategoryVC: UIViewController {
             errorMessageLabel.text = "Unable to save budget category."
         }
         
+        self.viewDidLoad()
+        
     }
     
     @objc func addBudgetButtonPressed(_ sender: UIButton) {
@@ -98,6 +100,8 @@ class AddBudgetCategoryVC: UIViewController {
         } else {
             errorMessageLabel.text = "Unable to save budget. Budget name and amount is required."
         }
+        
+        self.viewDidLoad()
     }
     
     private func setupUI() {
